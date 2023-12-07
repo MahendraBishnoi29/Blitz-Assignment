@@ -1,8 +1,9 @@
 import UniversitySearch from "./components/University";
+import "./App.css";
 
 function App() {
   return (
-    <div>
+    <div className="h-full">
       <UniversitySearch />
     </div>
   );
