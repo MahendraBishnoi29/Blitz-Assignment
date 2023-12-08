@@ -9,10 +9,24 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #000;
+  
 }
 
 
 body{
-	background: #000;
+	background: #151515;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px;
+  }
+  100% {
+    background-position: 1000px;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite linear;
+  background-size: 1000px 100%;
 }
