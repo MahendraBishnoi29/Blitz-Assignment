@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import Navbar from "./Navbar";
 import { Shimmer, UniversityCard } from "./UniversityCard";
 
 const UniversitySearch = () => {
@@ -54,45 +55,33 @@ const UniversitySearch = () => {
 
   return (
     <>
+      <Navbar />
       <div className="w-full px-6 py-3 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold mb-4 text-white">
-          University Search 🏫
-        </h1>
-        <Link to="/all-universities" className="underline mb-5 text-blue-500">
-          {" "}
-          Click Here to All see Universities by Country
-        </Link>
-        <div className="flex flex-col">
-          <label className="text-zinc-200">Enter Country:</label>{" "}
+        <div className="flex whitespace-nowrap mt-44">
           <input
             type="text"
             placeholder="enter country name..."
             value={country}
             onChange={handleInputChange}
-            className="border rounded-lg border-gray-300 p-2 text-black w-full"
+            className="border rounded-full border-gray-300 p-2 text-black w-full pr-40 py-3 shadow-gray-500 shadow-md"
           />
         </div>
-        <div className="my-4">
+        <div className="my-8">
           <h2 className="text-xl text-zinc-200 font-bold mb-2">
             Total Universities:{" "}
             <span className="text-indigo-300">{universities.length}</span>
           </h2>
-          {/* <p className="text-lg text-gray-400">Highest Count: {highestCount}</p>
-        <p className="text-lg text-gray-400">Lowest Count: {lowestCount}</p> */}
         </div>
 
         {noData && !loading && (
           <p className="text-lg text-white font-bold my-8">No results found</p>
         )}
         {!loading && !noData && universities.length === 0 && (
-          <p className="text-lg text-white mt-11">
+          <p className="text-lg text-zinc-400 mt-24">
             Enter a country name to search for universities.
           </p>
         )}
         <div className="">
-          {/* {universities?.length && (
-            <h2 className="text-white text-4xl mb-6">Search Results 👇🏻</h2>
-          )} */}
           <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {universities.length > 0
               ? universities.map((university, index) => (
