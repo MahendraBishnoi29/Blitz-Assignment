@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "https://uni-search-green.vercel.app/",
+  "proxy": "https://uni-search-green.vercel.app",
   
   "scripts": {
     "dev": "vite",
