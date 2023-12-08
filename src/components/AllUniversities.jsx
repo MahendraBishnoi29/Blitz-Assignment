@@ -5,7 +5,9 @@ const AllUniversities = () => {
 
   useEffect(() => {
     // Fetch all universities
-    fetch("http://universities.hipolabs.com/search")
+    fetch(
+      "https://uni-backend-bza3.onrender.com/api/universities/search?country="
+    )
       .then((response) => response.json())
       .then((data) => setUniversities(data))
       .catch((error) => console.error("Error fetching data:", error));

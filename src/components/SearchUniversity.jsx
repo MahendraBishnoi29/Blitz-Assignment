@@ -8,7 +8,7 @@ const UniversitySearch = () => {
   const [loading, setLoading] = useState(false);
   const [noData, setNoData] = useState(false);
 
-  const apiUrl = "http://universities.hipolabs.com/search?country=";
+  const apiUrl = `https://uni-backend-bza3.onrender.com/api/universities/search?country=${debouncedSearch}`;
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
@@ -16,7 +16,7 @@ const UniversitySearch = () => {
       if (debouncedSearch) {
         setLoading(true);
         setNoData(false);
-        fetch(apiUrl + debouncedSearch, {
+        fetch(apiUrl, {
           headers: {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest",
@@ -32,7 +32,7 @@ const UniversitySearch = () => {
             }
           })
           .catch((error) => {
-            console.error("Error fetching data:", error);
+            console.error("Error fetching data:", error.message);
             setLoading(false);
             setNoData(true);
           });
