@@ -1,9 +1,33 @@
-# Important 🟠
+# NOTE 🟠👇🏻
 
-During the development and testing phase, the provided API worked seamlessly on localhost. However, it appears to be blocking requests on deployed services, suggesting a potential issue with cross-origin resource sharing (CORS) configuration. I'm currently investigating this behavior to determine whether the API lacks CORS support or if there's an issue specific to the deployed environment.
-I have explored workarounds, including using a CORS proxy during development, but it seems that the deployed environment encounters issues.
+In addressing the CORS issue with the provided API (http://universities.hipolabs.com/search?name=), I implemented a strategic solution to enhance security and compatibility.
 
-# University Search Application
+![image](https://github.com/MahendraBishnoi29/MahendraBishnoi29/assets/74294202/2c82c4ce-4aee-436a-977f-b7e44fa5cd1f)
+
+Access the transformed API securely at `https://uni-backend-bza3.onrender.com`
+
+## Here's my approach
+
+### Custom Backend:
+
+- Implemented Express.js backend.
+- Acts as a mediator for external API communication.
+
+### CORS Configuration:
+
+- Configured CORS headers for secure cross-origin requests.
+
+### HTTPS Conversion:
+
+- Render automatically converted backend to HTTPS so i deployed the server on Render.com
+- Enhances overall security and compliance.
+
+### API URL Transformation:
+
+- Provided API's http transformed to https.
+- Resolved CORS issue and improved security.
+
+## Features
 
 - Implemented Debouncing for Search feature
 - Search by Country Name
