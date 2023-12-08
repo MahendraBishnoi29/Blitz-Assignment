@@ -8,15 +8,20 @@ const UniversitySearch = () => {
   const [loading, setLoading] = useState(false);
   const [noData, setNoData] = useState(false);
 
+  const apiUrl = "http://universities.hipolabs.com/search?country=";
+
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
       // Fetch universities based on the country
       if (debouncedSearch) {
         setLoading(true);
         setNoData(false);
-        fetch(
-          `http://universities.hipolabs.com/search?country=${debouncedSearch}`
-        )
+        fetch(apiUrl + debouncedSearch, {
+          headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+          },
+        })
           .then((response) => response.json())
           .then((data) => {
             setUniversities(data);
