@@ -63,7 +63,7 @@ const UniversitySearch = () => {
             placeholder="enter country name..."
             value={country}
             onChange={handleInputChange}
-            className="border rounded-full border-gray-300 p-2 text-black w-full pr-40 py-3 shadow-gray-500 shadow-md"
+            className="border rounded-full border-gray-300 p-2 text-black w-full pr-40 pl-2 py-3 shadow-gray-500 shadow-md"
           />
         </div>
         <div className="my-8">
@@ -77,7 +77,7 @@ const UniversitySearch = () => {
           <p className="text-lg text-white font-bold my-8">No results found</p>
         )}
         {!loading && !noData && universities.length === 0 && (
-          <p className="text-lg text-zinc-400 mt-24">
+          <p className="text-lg text-zinc-500 mt-24">
             Enter a country name to search for universities.
           </p>
         )}
