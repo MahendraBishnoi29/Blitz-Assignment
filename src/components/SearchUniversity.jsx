@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const UniversitySearch = () => {
   const [country, setCountry] = useState("");
   const [universities, setUniversities] = useState([]);
-  const [highestCount, setHighestCount] = useState(0);
-  const [lowestCount, setLowestCount] = useState(0);
-  const [countryWithHighestCount, setCountryWithHighestCount] = useState("");
-  const [countryWithLowestCount, setCountryWithLowestCount] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [noData, setNoData] = useState(false);
@@ -23,7 +20,7 @@ const UniversitySearch = () => {
           .then((response) => response.json())
           .then((data) => {
             setUniversities(data);
-            calculateCounts(data);
+
             setLoading(false);
             if (data.length === 0) {
               setNoData(true);
@@ -36,10 +33,6 @@ const UniversitySearch = () => {
           });
       } else {
         setUniversities([]);
-        setHighestCount(0);
-        setLowestCount(0);
-        setCountryWithHighestCount("");
-        setCountryWithLowestCount("");
         setLoading(false);
         setNoData(false);
       }
@@ -47,31 +40,6 @@ const UniversitySearch = () => {
 
     return () => clearTimeout(debounceTimer);
   }, [debouncedSearch]);
-
-  console.log("cccc ", country);
-
-  const calculateCounts = (data) => {
-    // highest and lowest counts
-    const counts = data.reduce((acc, university) => {
-      acc[university.country] = (acc[university.country] || 0) + 1;
-      return acc;
-    }, {});
-
-    const countries = Object.keys(counts);
-    setHighestCount(Math.max(...countries.map((country) => counts[country])));
-    setLowestCount(Math.min(...countries.map((country) => counts[country])));
-
-    // Find country with the highest and lowest counts
-    const countryHighest = Object.keys(counts).find(
-      (country) => counts[country] === highestCount
-    );
-    const countryLowest = Object.keys(counts).find(
-      (country) => counts[country] === lowestCount
-    );
-
-    setCountryWithHighestCount(countryHighest);
-    setCountryWithLowestCount(countryLowest);
-  };
 
   const handleInputChange = (event) => {
     setCountry(event.target.value);
@@ -83,6 +51,10 @@ const UniversitySearch = () => {
       <h1 className="text-3xl font-bold mb-4 text-white">
         University Search 🏫
       </h1>
+      <Link to="/all-universities" className="underline text-blue-500">
+        {" "}
+        Click Here to All Universities by Country
+      </Link>
       <div className="flex flex-col">
         <label className="text-zinc-200">Enter Country:</label>{" "}
         <input
@@ -98,8 +70,8 @@ const UniversitySearch = () => {
           Total Universities in {country}:{" "}
           <span className="text-indigo-300">{universities.length}</span>
         </h2>
-        <p className="text-lg text-gray-400">Highest Count: {highestCount}</p>
-        <p className="text-lg text-gray-400">Lowest Count: {lowestCount}</p>
+        {/* <p className="text-lg text-gray-400">Highest Count: {highestCount}</p>
+        <p className="text-lg text-gray-400">Lowest Count: {lowestCount}</p> */}
       </div>
       {loading && (
         <p className="text-lg text-white font-bold mb-4">Loading...</p>
