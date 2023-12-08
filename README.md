@@ -6,6 +6,8 @@ In addressing the CORS issue with the provided API (http://universities.hipolabs
 
 Access the transformed API securely at `https://uni-backend-bza3.onrender.com`
 
+### Please Wait upto 15-18s if results are not coming beacuse render.com is a bit slow
+
 ## Here's my approach
 
 ### Custom Backend:
